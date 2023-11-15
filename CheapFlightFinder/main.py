@@ -39,7 +39,7 @@ for destination in sheet_data:
         ORIGIN_CITY_IATA,
         destination["iataCode"],
         from_time=tomorrow,
-        to_time=six_month_from_today
+        to_time=one_month_from_today
     )
 
     if flight.price is not None and flight.price < int(destination["lowestPrice"]):
