@@ -32,6 +32,7 @@ if sheet_data[0]["iataCode"] == "":
 
 tomorrow = datetime.now() + timedelta(days=1)
 six_month_from_today = datetime.now() + timedelta(days=(6 * 30))
+one_month_from_today = datetime.now() + timedelta(days=30)
 
 for destination in sheet_data:
     flight = flight_search.check_flights(
