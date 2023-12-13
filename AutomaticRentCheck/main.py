@@ -13,7 +13,7 @@ header = {
 }
 
 # Use our Zillow-Clone website (instead of Zillow.com)
-response = requests.get("https://www.idealista.com/buscar/alquiler-viviendas/moncada_valencia/", headers=header)
+response = requests.get("https://www.idealista.com/buscar/alquiler-viviendas/valencia/", headers=header)
 
 data = response.text
 soup = BeautifulSoup(data, "html.parser")
@@ -60,7 +60,7 @@ for n in range(len(all_links)):
 
     place.send_keys(all_addresses[n])
     price.send_keys(all_prices[n])
-    url.send_keys(all_links[n])
+    url.send_keys("https://www.idealista.com/" + all_links[n])
     submit_button.click()
 
 driver.close()
