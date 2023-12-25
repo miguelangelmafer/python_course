@@ -16,7 +16,8 @@ class Book(db.Model):
     title = db.Column(db.String(250), nullable=False)
     author = db.Column(db.String(250), nullable=False)
     pages = db.Column(db.Integer, nullable=False)
-    rating = db.Column(db.Float, nullable=False)
+    lecture_year = db.Column(db.Integer, nullable=False)
+    format = db.Column(db.String, nullable=False)
 
 
 # Create table schema in the database. Requires application context.
@@ -32,7 +33,8 @@ def add():
             title=request.form["title"],
             author=request.form["author"],
             pages=request.form["pages"],
-            rating=request.form["rating"]
+            lecture_year=request.form["lecture_year"],
+            format=request.form.getlist('formats')[0]
         )
         db.session.add(new_book)
         db.session.commit()
@@ -56,7 +58,7 @@ def edit():
         # UPDATE RECORD
         book_id = request.form["id"]
         book_to_update = db.get_or_404(Book, book_id)
-        book_to_update.rating = request.form["rating"]
+        book_to_update.format = request.form["format"]
         db.session.commit()
         return redirect(url_for('home'))
     book_id = request.args.get('id')
