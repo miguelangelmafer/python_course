@@ -42,7 +42,7 @@ for destination in sheet_data:
         to_time=one_month_from_today
     )
 
-    if flight.price is not None and flight.price < int(destination["lowestPrice"]):
+    if hasattr(flight, 'price') and flight.price is not None and flight.price < int(destination["lowestPrice"]):
         telegram_bot_send_text(
             f"Low price alert! Only {flight.price}€ to fly from {flight.origin_city}-{flight.origin_airport} to "
             f"{flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}.")
